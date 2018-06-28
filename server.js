@@ -19,7 +19,7 @@ app.use(volleyball);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/api/verify", require("./api.js")); // include our routes!
+app.use("/api/", require("./api.js")); // include our routes!
 
 // error handling middleware
 app.use((err, req, res, next) => {
