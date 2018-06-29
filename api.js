@@ -9,16 +9,14 @@ const fakeDB = {
   }
 };
 
-router.get("/:id", (req, res, next) => {
-  const id = req.params.id;
-  res.json({ res: "This is a get with id:", id });
-});
-
 router.post("/verify/:id", (req, res, next) => {
   // this POST comes from Alythia after the app scan
   const id = req.params.id;
   const reqEmail = req.body.email;
   const dbEmail = fakeDB.user.email;
+  //
+  //FindOrCreate here!
+  //
   fakeDB.user.loginIdentifier = uuidv4();
 
   if (dbEmail === reqEmail) {
@@ -28,9 +26,9 @@ router.post("/verify/:id", (req, res, next) => {
   }
 });
 
-router.post("/logged-in/:loginIdentifier", (req, res, next) => {
-  const callbackURL = req.body.callbackURL;
-  const failureURL = req.body.failureURL;
+router.get("/logged-in/:loginIdentifier", (req, res, next) => {
+  const callbackURL = "http://www.twitter.com";
+  const failureURL = "http://www.facebook.com";
   const loginIdentifier = req.params.loginIdentifier;
 
   if (fakeDB.user.loginIdentifier === loginIdentifier) {
@@ -38,6 +36,11 @@ router.post("/logged-in/:loginIdentifier", (req, res, next) => {
   } else {
     res.redirect(failureURL);
   }
+});
+
+router.get("/:id", (req, res, next) => {
+  const id = req.params.id;
+  res.json({ res: "This is a get with id:", id });
 });
 
 router.use((req, res, next) => {
