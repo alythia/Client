@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - node # uses most recent stable node version
+services:
+  - postgresql # starts up postgres
+addons:
+  postgresql: '9.6' # highest available postgres version on Travis
+dist: trusty # uses trusty environment
+sudo: false # when on trusty, uses Docker containers for speed
+notifications:
+  email:
+    on_success: change # default: change (only when going from broken to fixed)
+    on_failure: always # default: always (which is annoying, as it should be)
+install:
+  # - npm i -g npm@5.7.1 # delete once 5.7.X is out of "pre-release"
+  - travis_wait npm ci             # faster, goes only from package-lock
+before_script:
+  - psql -c 'create database "alythia-mock-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
+
+before_deploy:
+  - npm run build-client # make the bundle
+  - rm -rf node_modules # omit from the tarball, since we skip cleanup
+deploy:
+  skip_cleanup: true # prevents travis from deleting the build
+  provider: heroku
+  app: alythiamock # see README
+  api_key:
+    secure: "p5fEODrcRsbwNr7sfM/hO0D5I3IiFTq/flM7CRiEO1w9NYoY76tdV6SCjX4pPv9LGcIuHaqDEm7pYfOJiMNAW9fL4TkH+Co3ZbW7QGTMtUnVvHS2TRTNsw9QChQmHt2EWu7kRv5ZQLBTILfKGVByh/HvA2vEq/bkX/9G///dxJ6uoCAT8bU70ukBaAhnHVs7Bt/86LQgTgniFUyzWNfB0YkIfT32XL9KY+CzvcBbhTx8XAMkW0f7mwjianjjSiyc61ENQReXYgMxI5dcu5rbD6YjWawX91IHTL6iimGG2BXexX+nEfiVm89Y8D5I94luoqJ//L3Rn9zHKOD5u0pz+RbvRB7fzyKyhSfOXYutey4dZn+3vYswWUT8OBu42S9VoeHVV8sNdGIkn5y8Sy9vTMRLuV2xqUn0maH6sq0z6gsny5mMzTEEFQHMChYtTiYzplKVX/bFu3spxrKAyX5SOy5ien1lUResCR2ZAeECKb/6dCccu2G51CzeUB7fFDi03N2/eU52mBQVFp4wHj9i5gPBsyd8V36hx70UcVK+D7ZKmlrUs0nKgesW3u1YNOyAMXDce8Nfb5g4oE2SLad4OI6nb6qWOtDV5/ZLb8JYeuUT5hiWg6Lj9XwdBbjv3u2JSqV9FmxzJS3o/fR5n7HUPkd5BVLbwqeetOTKcaBqIq0="
