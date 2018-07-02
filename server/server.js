@@ -19,12 +19,13 @@ app.use(volleyball);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, '../public')));
+
+app.use('/api/', require('./api.js')); // include our routes!
 
 app.use('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '.', 'public/index.html'));
+  res.sendFile(path.join(__dirname, '..', 'public/index.html'));
 });
-app.use('/api/', require('./api.js')); // include our routes!
 
 // error handling middleware
 app.use((err, req, res, next) => {
