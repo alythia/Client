@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const alythiaKey = '27f09100-7e2f-11e8-b6aa-9397b1b48ee9';
+const alythiaKey = '9940aac0-7f0b-11e8-ad5b-452a5a68085e';
 //key stored here in component for now
 
 export const Root = () => {
   return (
     <div>
-      <img src="./numberFire.jpeg" style={styling.img} />
+      <img src="./numberFire.png" style={styling.img} />
       <a
         href={`http://alythia.herokuapp.com/api/clients/${alythiaKey}`}
         style={styling.button}
@@ -23,8 +23,8 @@ const styling = {
     width: '250px',
     height: '50px',
     zIndex: 3,
-    cursor: 'pointer',
-  },
+    cursor: 'pointer'
+  }
 };
 
 export default Root;
