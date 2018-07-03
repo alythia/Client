@@ -27,7 +27,7 @@ router.post('/verify/:id', (req, res, next) => {
 });
 
 router.get('/logged-in/:loginIdentifier', (req, res, next) => {
-  const callbackURL = 'http://alythiamock.herokuapp.com/logged-in';
+  const callbackURL = 'http://alythiamock.herokuapp.com/#/logged-in';
   const failureURL = 'http://www.facebook.com';
   const loginIdentifier = req.params.loginIdentifier;
 
