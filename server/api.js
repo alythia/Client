@@ -4,7 +4,7 @@ const uuidv4 = require('uuid/v4');
 
 const fakeDB = {
   user: {
-    email: 'email@email.com',
+    email: 'M@m.co',
     loginIdentifier: ''
   }
 };
@@ -18,7 +18,8 @@ router.post('/verify/:id', (req, res, next) => {
   //
   fakeDB.user.loginIdentifier = uuidv4();
 
-  if (dbEmail === reqEmail) {
+  console.log(dbEmail, reqEmail);
+  if (dbEmail == reqEmail) {
     res.json({ loginIdentifier: fakeDB.user.loginIdentifier });
   } else {
     res.status(406).send(`Could not located user with email: ${reqEmail}`);
@@ -30,6 +31,7 @@ router.get('/logged-in/:loginIdentifier', (req, res, next) => {
   const failureURL = 'http://www.facebook.com';
   const loginIdentifier = req.params.loginIdentifier;
 
+  console.log(fakeDB.user.loginIdentifier, loginIdentifier);
   if (fakeDB.user.loginIdentifier === loginIdentifier) {
     res.redirect(callbackURL);
   } else {
