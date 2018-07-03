@@ -8,7 +8,7 @@ export const Root = () => {
     <div>
       <img src="./numberFire.jpeg" style={styling.img} />
       <a
-        href={`http://localhost:8080/api/clients/${alythiaKey}`}
+        href={`http://alythia.herokuapp.com/api/clients/${alythiaKey}`}
         style={styling.button}
       />
     </div>
@@ -23,8 +23,8 @@ const styling = {
     width: '250px',
     height: '50px',
     zIndex: 3,
-    cursor: 'pointer'
-  }
+    cursor: 'pointer',
+  },
 };
 
 export default Root;
