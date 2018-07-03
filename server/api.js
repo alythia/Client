@@ -5,8 +5,8 @@ const uuidv4 = require('uuid/v4');
 const fakeDB = {
   user: {
     email: 'M@m.co',
-    loginIdentifier: '',
-  },
+    loginIdentifier: ''
+  }
 };
 
 router.post('/verify/:id', (req, res, next) => {
@@ -27,7 +27,7 @@ router.post('/verify/:id', (req, res, next) => {
 });
 
 router.get('/logged-in/:loginIdentifier', (req, res, next) => {
-  const callbackURL = 'http://alythiamock.herokuapp.com';
+  const callbackURL = 'http://alythiamock.herokuapp.com/logged-in';
   const failureURL = 'http://www.facebook.com';
   const loginIdentifier = req.params.loginIdentifier;
 
