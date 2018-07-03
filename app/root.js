@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const alythiaKey = '1870a660-7bab-11e8-a50a-cb434e7eca97';
+const alythiaKey = '982ad660-7e39-11e8-a0f6-fdeeb517a1c7';
 //key stored here in component for now
 
 export const Root = () => {
