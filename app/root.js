@@ -23,8 +23,8 @@ const styling = {
     width: '250px',
     height: '50px',
     zIndex: 3,
-    cursor: 'pointer'
-  }
+    cursor: 'pointer',
+  },
 };
 
 export default Root;

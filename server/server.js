@@ -9,8 +9,13 @@ const app = express();
 const PORT = 8023;
 
 console.log('db synced');
-app.listen(PORT, () =>
-  console.log(`studiously serving silly sounds on port ${PORT}`));
+app.listen(process.env.PORT || 3000, function() {
+  console.log(
+    'Express server listening on port %d in %s mode',
+    this.address().port,
+    app.settings.env
+  );
+});
 
 // logging middleware
 app.use(volleyball);
