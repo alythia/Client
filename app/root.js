@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const alythiaKey = '1870a660-7bab-11e8-a50a-cb434e7eca97';
+const alythiaKey = '27f09100-7e2f-11e8-b6aa-9397b1b48ee9';
 //key stored here in component for now
 
 export const Root = () => {
@@ -8,7 +8,7 @@ export const Root = () => {
     <div>
       <img src="./numberFire.jpeg" style={styling.img} />
       <a
-        href={`http://localhost:8080/api/clients/${alythiaKey}`}
+        href={`http://alythia.herokuapp.com/api/clients/${alythiaKey}`}
         style={styling.button}
       />
     </div>
