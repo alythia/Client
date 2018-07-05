@@ -2,7 +2,7 @@
   "name": "capstone-client",
   "version": "1.0.0",
   "description": "",
-  "main": "server/api.js",
+  "main": "server/auth.js",
   "scripts": {
     "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./app/**/*.spec.js\"  --require @babel/polyfill --require @babel/register",
     "start": "webpack -w & nodemon server/server.js -e html,js,css --ignore public",
