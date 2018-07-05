@@ -17,7 +17,7 @@ router.post('/verify/:id', (req, res, next) => {
   //FindOrCreate here!
   //
   fakeDB.user.loginIdentifier = uuidv4();
-  fakeDB.user.dbEmail = reqEmail;
+  fakeDB.user.email = reqEmail;
 
   const dbEmail = fakeDB.user.email;
 
