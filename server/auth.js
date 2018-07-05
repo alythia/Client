@@ -33,6 +33,13 @@ router.get('/logged-in/:loginIdentifier', (req, res, next) => {
   const failureURL = 'http://www.facebook.com';
   const loginIdentifier = req.params.loginIdentifier;
 
+  console.log(
+    fakeDB.user.loginIdentifier,
+    loginIdentifier,
+    'same: ?? ',
+    fakeDB.user.loginIdentifier === loginIdentifier
+  );
+
   if (fakeDB.user.loginIdentifier === loginIdentifier) {
     res.redirect(callbackURL);
   } else {
