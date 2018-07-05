@@ -1,6 +1,7 @@
 import React from 'react';
 
-export const UserPage = () => {
+export const UserPage = props => {
+  console.log(props);
   return (
     <div>
       <img src="./logged-in.jpeg" style={styling.img} />
