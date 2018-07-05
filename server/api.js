@@ -4,7 +4,7 @@ const uuidv4 = require('uuid/v4');
 
 const fakeDB = {
   user: {
-    email: 'M@m.co',
+    email: '',
     loginIdentifier: ''
   }
 };
@@ -17,8 +17,8 @@ router.post('/verify/:id', (req, res, next) => {
   //FindOrCreate here!
   //
   fakeDB.user.loginIdentifier = uuidv4();
+  fakeDB.user.dbEmail = reqEmail;
 
-  console.log(dbEmail, reqEmail);
   if (dbEmail == reqEmail) {
     res.json({ loginIdentifier: fakeDB.user.loginIdentifier });
   } else {
