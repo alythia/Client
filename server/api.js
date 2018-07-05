@@ -12,12 +12,14 @@ const fakeDB = {
 router.post('/verify/:id', (req, res, next) => {
   // this POST comes from Alythia after the app scan
   const reqEmail = req.body.email;
-  const dbEmail = fakeDB.user.email;
+
   //
   //FindOrCreate here!
   //
   fakeDB.user.loginIdentifier = uuidv4();
   fakeDB.user.dbEmail = reqEmail;
+
+  const dbEmail = fakeDB.user.email;
 
   if (dbEmail == reqEmail) {
     res.json({ loginIdentifier: fakeDB.user.loginIdentifier });
