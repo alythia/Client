@@ -1,6 +1,6 @@
 'use strict';
 const router = require('express').Router();
-const uuidv4 = require('uuid/v4');
+const { userToken } = require('./node-module');
 
 const fakeDB = {
   user: {
@@ -16,7 +16,7 @@ router.post('/verify/:id', (req, res, next) => {
   //
   //FindOrCreate here!
   //
-  fakeDB.user.loginIdentifier = uuidv4();
+  fakeDB.user.loginIdentifier = userToken();
   fakeDB.user.email = reqEmail;
 
   const dbEmail = fakeDB.user.email;
